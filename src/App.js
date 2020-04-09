@@ -14,6 +14,9 @@ class Text extends Component {
         <p>{this.props.t1}</p>
         <p>{this.props.t2}</p>
         <p>{this.props.number}</p>
+        <p>{this.props.number-1}</p>
+        <p>{this.props.number+2}</p>
+        <p>{this.props.number-5}</p>
         <p>{flag}</p>
         <p>{mappedNumbers.join(', ')}</p>
         <p>{this.props.login.userCode}</p>
