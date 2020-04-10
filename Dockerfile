@@ -4,9 +4,8 @@ WORKDIR /src
 COPY package.json package-lock.json ./
 RUN npm install
 RUN npm install -g serve
-RUN npm run build
 COPY . .
+RUN npm run build
 CMD ["serve", "-s","build"]
-EXPOSE 5000
-
+EXPOSE 8080
     

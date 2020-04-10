@@ -31,6 +31,6 @@ spec:
   type: ClusterIP  
   ports:
   - name: "upc-pool-frotend"
-    port: 5000
+    port: 8080
   selector:
     app: upc-pool-frotend
