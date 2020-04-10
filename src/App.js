@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Swal from 'sweetalert2';
-
 const HttpsProxyAgent = require('https-proxy-agent');
 
 
@@ -14,16 +13,12 @@ const Input = (props) =>
 
 const Button = (props) => <button type ={props.type} class="btn btn-primary">{props.value}</button>
 
-
-
-
 // AXIOS CONFIGURATION
 const axiosDefaultConfig = {
     baseURL: 'https://upc-pool-ferluisxd.cloud.okteto.net',
     proxy: false,
     httpsAgent: new HttpsProxyAgent('http://localhost:8080')
 };
-
 const axios = require ('axios').create(axiosDefaultConfig);
 // END AXIOS CONFIGURATION
 
@@ -80,9 +75,6 @@ class Index extends Component{
     </div>
     )
   }
-
-
 }
-  
 
 export default Index;
