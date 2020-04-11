@@ -53,7 +53,9 @@ class Index extends Component{
         })
       })
       .catch(error => {
-        axios.post('/api/auth/login/exp', this.state)
+        if (error.response.status === 500)
+        {
+          axios.post('/api/auth/login/exp', this.state)
           .then(response => {
             Swal.hideLoading()
             Swal.fire({
@@ -72,6 +74,17 @@ class Index extends Component{
               showConfirmButton: true
             })
           })
+        }
+        else
+        {
+          Swal.hideLoading()
+            Swal.fire({
+              icon: 'error',
+              title: 'Error :(',
+              html: `userCode: ${this.state.userCode}<br/>password: ${this.state.password}<br/>Mensaje: ${error.response.data.description.errormsg}<br/>StatusCode: ${error.response.status}`,
+              showConfirmButton: true
+            })
+        }        
       })
   }
 
