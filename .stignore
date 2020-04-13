@@ -3,3 +3,7 @@
 /images
 /build
 .env
+.env.development
+.env.development.local
+.env.local
+.env.production
