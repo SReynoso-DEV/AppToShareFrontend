@@ -6,7 +6,6 @@ RUN npm install
 RUN npm install -g http-server
 COPY . .
 RUN npm run build
-#Really no idea if  this path  willwork you gotta change  /src/build
-CMD ["http-server", "~/src/build","--port","8080","--proxy","https://upc-pool-ferluisxd.cloud.okteto.net"]
+CMD ["http-server", "./build","--port","8080","--proxy","https://upc-pool-ferluisxd.cloud.okteto.net"]
 EXPOSE 8080
     
