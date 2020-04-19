@@ -8,11 +8,10 @@ import axios from 'axios';
 const Input = (props) =>
     <div class="form-group">
         <label name={props.name}>{props.name}</label><br />
-        <input class="form-control" type={props.type} placeholder={props.name} name={props.name} onChange={props.changeFunction} />
+        <input className="form-control" type={props.type} placeholder={props.name} name={props.name} onChange={props.changeFunction} />
     </div>
 
-const Button = (props) => <button type={props.type} class="btn btn-primary">{props.value}</button>
-
+const Button = (props) => <button type={props.type} className="btn btn-primary">{props.value}</button>
 export class Login extends Component {
     constructor(props) {
         super(props);
@@ -43,6 +42,14 @@ export class Login extends Component {
 
     };
 
+    historyPush = (responseData) => {
+        this.props.history.push({
+            pathname: '/Profile',
+            data: {name: responseData.name, userCode: this.state.userCode, password: this.state.password, token: responseData.token} // your data array of objects
+          })  
+    }
+    
+
     // AXIOS SEND
     axiosSend = (e) => {
         e.preventDefault()
@@ -58,15 +65,18 @@ export class Login extends Component {
         })
         axios.post('api/auth/login/exp2', this.state)
             .then(response => {
-                Swal.hideLoading()
-                console.log(response);
-
-                Swal.fire({
+                Swal.close()
+                this.historyPush(response.data);    
+                /*Swal.fire({
                     icon: 'success',
                     title: `Hola, ${response.data.name}`,
                     html: `userCode: ${this.state.userCode}<br/>password: ${this.state.password}<br/>Tu token es: ${response.data.token}`,
                     showConfirmButton: true
-                })
+                }).then(function (result){
+                    if (result.value){    
+                                 
+                    }
+                })*/
             })
             .catch(error => {
                 Swal.hideLoading()
@@ -84,6 +94,7 @@ export class Login extends Component {
 
 
     render() {
+        
         return (            
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
