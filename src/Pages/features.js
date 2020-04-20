@@ -9,6 +9,12 @@ export class Features extends Component {
       return(
         <div>            
             <Nav />
+            <div class = "col-md-12">
+              { data.features.map(feature =>
+                <h5>Feature: {feature}</h5>
+              )}
+            </div>
+            
           
         </div>
       )

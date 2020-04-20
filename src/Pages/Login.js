@@ -45,7 +45,7 @@ export class Login extends Component {
     historyPush = (responseData) => {
         this.props.history.push({
             pathname: '/Profile',
-            data: {name: responseData.name, userCode: this.state.userCode, password: this.state.password, token: responseData.token} // your data array of objects
+            //data: {name: responseData.name, userCode: this.state.userCode, password: this.state.password, token: responseData.token} // your data array of objects
           })  
     }
     
@@ -66,7 +66,8 @@ export class Login extends Component {
         axios.post('api/auth/login/exp2', this.state)
             .then(response => {
                 Swal.close()
-                this.historyPush(response.data);    
+                sessionStorage.setItem('userCode', this.state.userCode);
+                this.historyPush(response.data);
                 /*Swal.fire({
                     icon: 'success',
                     title: `Hola, ${response.data.name}`,
