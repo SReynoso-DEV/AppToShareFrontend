@@ -23,9 +23,6 @@ function Nav() {
                         <Link to="/cpublics" className="nav-link">Cubiculos Publicos</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/features" className="nav-link">Recursos de un Cubiculo</Link>
-                    </li>
-                    <li class="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>
                     </li>
                 </ul>
