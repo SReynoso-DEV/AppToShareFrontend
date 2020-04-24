@@ -6,7 +6,7 @@ import axios from 'axios';
 //const ApiURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
 
 const Input = (props) =>
-    <div class="form-group">
+    <div className="form-group">
         <label name={props.name}>{props.name}</label><br />
         <input className="form-control" type={props.type} placeholder={props.name} name={props.name} onChange={props.changeFunction} />
     </div>
@@ -63,26 +63,17 @@ export class Login extends Component {
                 Swal.showLoading()
             }
         })
-        axios.post('api/auth/login/exp2', this.state)
+        axios.post('api/auth/v3/login', this.state)
             .then(response => {
                 Swal.close()
+                console.log(response.data);
                 sessionStorage.setItem('userCode', this.state.userCode);
-                this.historyPush(response.data);
-                /*Swal.fire({
-                    icon: 'success',
-                    title: `Hola, ${response.data.name}`,
-                    html: `userCode: ${this.state.userCode}<br/>password: ${this.state.password}<br/>Tu token es: ${response.data.token}`,
-                    showConfirmButton: true
-                }).then(function (result){
-                    if (result.value){    
-                                 
-                    }
-                })*/
+                sessionStorage.setItem('token', response.data.token);
+                window.location.href="/profile"
             })
             .catch(error => {
                 Swal.hideLoading()
-                console.log(error)
-
+                console.log(error.response)
                 Swal.fire({
                     icon: 'error',
                     title: 'Error :(',
