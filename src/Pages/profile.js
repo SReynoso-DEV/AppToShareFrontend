@@ -47,7 +47,7 @@ export class Profile extends Component {
     return (
       <div>
         <Nav />
-        <div class="col-md-12">
+        <div className="col-md-12">
           <h1>Welcome Back: {this.state.user.name}</h1>
           <h5>userCode: {this.state.user.userCode}</h5>
           <h5>email: {this.state.user.email}</h5>

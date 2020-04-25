@@ -69,7 +69,7 @@ export class Login extends Component {
                 console.log(response.data);
                 sessionStorage.setItem('userCode', this.state.userCode);
                 sessionStorage.setItem('token', response.data.token);
-                window.location.href="/profile"
+                window.location.href="/home"
             })
             .catch(error => {
                 Swal.hideLoading()
