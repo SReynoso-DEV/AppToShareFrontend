@@ -1,0 +1,10 @@
+name: upc-pool-frontend
+workdir: /src
+command: ["bash"]
+environment:
+    - NODE_ENV=production    
+forward:
+    - 8080:8080
+    - 2350:2350
+persistentVolume:
+    enabled: false
