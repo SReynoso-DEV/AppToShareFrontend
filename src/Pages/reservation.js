@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, InputGroupText, Input, InputGroupAddon, InputGroup } from 'reactstrap';
+import Swal from 'sweetalert2';
+import axios from "axios";
 
 const ModalExample = (props) => {
   const {
@@ -11,7 +13,7 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const [tiu, setTiu] = useState();
   const [hours, setHours] = useState();
-  const [json, setJson] = useState([]);
+  // const [json, setJson] = useState([]);
 
   const toggle = () => setModal(!modal);
 
@@ -22,19 +24,57 @@ const ModalExample = (props) => {
   const entryHours = (e) => {
     setHours(e.target.value);
   }
-  const send = () => {    
-    setJson({
+  function send() {    
+    let json = {
               "room": {
                   "office" : object.office,
                   "code" : object.code
               },
-              "hours" : hours,
-              "userSecondayCode" : tiu,
+              "hours" : parseInt(hours),
+              "userSecondaryCode" : tiu,
               "start" : object.start
-          }) 
+          }
       setModal(!modal);
+      Swal.fire({
+        title: 'Reservando Cubiculo',
+        text: 'Espera separando el cubiculo para ti.',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        onOpen: () => {
+            Swal.showLoading()
+        }
+    })
+    axios.post('api/reservation', json, {
+      headers: { "Authorization": "Bearer " + sessionStorage.getItem('token') }
+  })
+        .then(response => {
+            Swal.close()
+            console.log(response.data);
+            Swal.fire({
+              icon: 'success',
+              title: 'Cubiculo Reservado Satisfactoriamente',
+              html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${response.data.start}<br/>
+                    Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}\nActivador: ${response.data.userSecondaryCode}`,
+              showConfirmButton: true
+          }).then(function (result){
+            if (result.value){ 
+              window.location.href = "/cpublics"
+            }
+        })
+        })
+        .catch(error => {
+            Swal.hideLoading()
+            console.log(error.response)
+            Swal.fire({
+                icon: 'error',
+                title: 'Error :(',
+                html: `${error.response}`,
+                showConfirmButton: true
+            })
+        })
   }
-  console.log(json)
+ 
   return (
     <div>
       <Button color="danger" onClick={toggle}>{buttonLabel}</Button>

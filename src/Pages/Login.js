@@ -27,29 +27,6 @@ export class Login extends Component {
         });
     }
 
-    callApi = async (path, Method, State) => {
-        const response = await fetch(path, {
-            method: Method,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(State),
-        });
-
-        const body = await response.json();
-        let result = [response, body];
-        return result;
-
-    };
-
-    historyPush = (responseData) => {
-        this.props.history.push({
-            pathname: '/Profile',
-            //data: {name: responseData.name, userCode: this.state.userCode, password: this.state.password, token: responseData.token} // your data array of objects
-          })  
-    }
-    
-
     // AXIOS SEND
     axiosSend = (e) => {
         e.preventDefault()
@@ -63,7 +40,7 @@ export class Login extends Component {
                 Swal.showLoading()
             }
         })
-        axios.post('api/auth/v3/login', this.state)
+        axios.post('api/auth/v2/login', this.state)
             .then(response => {
                 Swal.close()
                 console.log(response.data);
