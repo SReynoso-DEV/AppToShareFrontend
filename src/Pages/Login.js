@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
 //const ApiURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
 
+function dynamicPlaceholder(propName){
+    switch(propName)
+    {
+        case 'userCode': return 'Código de usuario'
+        case 'password': return 'Contraseña'
+        default: return ''
+    }
+
+}
+
 const Input = (props) =>
-    <div className="form-group">
-        <label name={props.name}>{props.name}</label><br />
-        <input className="form-control" type={props.type} placeholder={props.name} name={props.name} onChange={props.changeFunction} />
+    <div className="form-group mt-4 mb-4">
+        <label className="col-md-6 label-style" name={props.name}>{dynamicPlaceholder(props.name)}</label>
+        <input className="col-md-6 input-style" type={props.type} placeholder={ dynamicPlaceholder(props.name) } name={props.name} onChange={props.changeFunction} />
     </div>
 
-const Button = (props) => <button type={props.type} className="btn btn-primary">{props.value}</button>
+const Button = (props) => <button type={props.type} className="mt-3 btn btn-primary button-send">{props.value}</button>
 export class Login extends Component {
     constructor(props) {
         super(props);
@@ -64,21 +73,43 @@ export class Login extends Component {
 
     render() {
         
-        return (            
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <form onSubmit={this.axiosSend}>
-                    <Input type="text"
-                        name="userCode"
-                        changeFunction={this.loginChange} />
-                    <Input type="password"
-                        name="password"
-                        changeFunction={this.loginChange} />
-                    <Button type="submit"
-                        value="Enviar" />
-                </form>
-            </header>
-        )
+        return (
+          <header>
+            <div className="cub-landing">
+              <div className="formulario">
+                <div class="card-heading"></div>
+                <div className="card-body px-5">
+                  <h2 className="form-title pt-5">
+                    {" "}
+                    ¡Bienvenido a App To Share!
+                  </h2>
+                  <hr className="line line-color "></hr>
+                  <div class="row justify-content-left">
+                    <h3 class="form-subtitle pt-5">Inicia sesión:</h3>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="col-md-12 mt-1 text-center">
+                      <form onSubmit={this.axiosSend}>
+                        <Input
+                          type="text"
+                          name="userCode"
+                          changeFunction={this.loginChange}
+                        />
+                        <Input
+                          type="password"
+                          name="password"
+                          changeFunction={this.loginChange}
+                        />
+                        <Button type="submit" value="Enviar" />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </header>
+        );
     }
 }
 
