@@ -4,20 +4,10 @@ import axios from 'axios';
 
 //const ApiURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
 
-function dynamicPlaceholder(propName){
-    switch(propName)
-    {
-        case 'userCode': return 'Código de usuario'
-        case 'password': return 'Contraseña'
-        default: return ''
-    }
-
-}
-
 const Input = (props) =>
     <div className="form-group mt-4 mb-4">
-        <label className="col-md-6 label-style" name={props.name}>{dynamicPlaceholder(props.name)}</label>
-        <input className="col-md-6 input-style" type={props.type} placeholder={ dynamicPlaceholder(props.name) } name={props.name} onChange={props.changeFunction} />
+        <label className="col-md-6 label-style" name={props.name}>{props.name}</label>
+        <input className="col-md-6 input-style" type={props.type} placeholder={props.name} name={props.name} onChange={props.changeFunction} />
     </div>
 
 const Button = (props) => <button type={props.type} className="mt-3 btn btn-primary button-send">{props.value}</button>
@@ -49,7 +39,7 @@ export class Login extends Component {
                 Swal.showLoading()
             }
         })
-        axios.post('api/auth/v2/login', this.state)
+        axios.post('api/auth/v3/login', this.state)
             .then(response => {
                 Swal.close()
                 console.log(response.data);

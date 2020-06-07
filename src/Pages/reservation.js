@@ -55,7 +55,7 @@ const ModalExample = (props) => {
               icon: 'success',
               title: 'Cubiculo Reservado Satisfactoriamente',
               html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${response.data.start}<br/>
-                    Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}\nActivador: ${response.data.userSecondaryCode}`,
+                    Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
               showConfirmButton: true
           }).then(function (result){
             if (result.value){ 

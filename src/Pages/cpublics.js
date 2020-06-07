@@ -25,6 +25,7 @@ function CPublics () {
             headers: { "Authorization": "Bearer " + sessionStorage.getItem('token') }
         })
             .then(response => {
+                console.log(response.data);
                 setCubiculos(response.data);
                 Swal.close()
             });
@@ -48,9 +49,7 @@ function CPublics () {
                     <tr>
                         <th scope="col">Codigo</th>
                         <th scope="col">Fecha/Hora Disponible</th>
-                        <th scope="col">Sede</th>
-                        <th scope="col">Pabellon</th>
-                        <th scope="col">Piso</th>
+                        <th scope="col">Sede</th>                        
                         <th scope="col">Asientos</th>
                         <th scope="col">Recursos</th>
 
@@ -62,9 +61,7 @@ function CPublics () {
                             <tr key={cubiculo._id + index}>
                                 <th>{av.code}</th>
                                 <td>{cubiculo.start}</td>
-                                <td>{av.office}</td>
-                                <td>{av.building}</td>
-                                <td>{av.floor}</td>
+                                <td>{av.office}</td>                                
                                 <td>{av.seats}</td>
                                 <td>{recorriendo(av)}</td>
                                 <td><ModalExample

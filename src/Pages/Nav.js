@@ -17,10 +17,13 @@ function Nav() {
             <div className="navbar-collapse collapse show" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link to="/profile" className="nav-link">Mi Perfil<span className="sr-only">(current)</span></Link>
+                        <Link to="/profile" className="nav-link">Mi Perfil{/*<span className="sr-only">(current)</span>*/}</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/cpublics" className="nav-link">Cubiculos Publicos</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/myreservations" className="nav-link">Mis Reservas</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>

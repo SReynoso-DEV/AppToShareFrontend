@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import CPublics from './Pages/cpublics';
 import Profile from './Pages/profile';
 import Reservation from './Pages/reservation';
+import MyReservations from './Pages/myreservations';
 
 function App(){
     return(
@@ -18,6 +19,7 @@ function App(){
             <Route path="/cpublics" exact component={CPublics}/>
             <Route path="/profile" exact component={Profile}/>
             <Route path="/reservation" exact component={Reservation}/>
+            <Route path="/myreservations" exact component={MyReservations}/>
           </Switch>
         </div>
         </Router>
