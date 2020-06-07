@@ -21,7 +21,7 @@ export class Login extends Component {
     }
     componentDidMount() {
       if (localStorage.length !== 0)
-      window.location.href = "/home"
+      window.location.href = '/#/home'
     }
 
 
@@ -50,7 +50,7 @@ export class Login extends Component {
                 console.log(response.data);
                 localStorage.setItem('userCode', this.state.userCode);
                 localStorage.setItem('token', response.data.token);
-                window.location.href="/home"
+                window.location.href="/#/home"
             })
             .catch(error => {
                 Swal.hideLoading()
