@@ -8,7 +8,7 @@ function MyReservations() {
     
     const [reservations, setReservations] = useState([]);
     useEffect(() =>  {
-        if (sessionStorage.length === 0)
+        if (localStorage.length === 0)
         window.location.href = "/"
         
 
@@ -23,7 +23,7 @@ function MyReservations() {
             }
         })
         Axios.get('api/reservation', {
-            headers: { "Authorization": "Bearer " + sessionStorage.getItem('token') }
+            headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
             .then(response => {
                 console.log(response.data);
@@ -56,7 +56,7 @@ function MyReservations() {
                     }
                 })
                 Axios.delete('api/reservation/'+ id, {
-                  headers: { "Authorization": "Bearer " + sessionStorage.getItem('token') }
+                  headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
               })
               .then(response => {
                 Swal.close()

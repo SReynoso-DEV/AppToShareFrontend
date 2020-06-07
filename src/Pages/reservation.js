@@ -46,7 +46,7 @@ const ModalExample = (props) => {
         }
     })
     axios.post('api/reservation', json, {
-      headers: { "Authorization": "Bearer " + sessionStorage.getItem('token') }
+      headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
   })
         .then(response => {
             Swal.close()
@@ -69,7 +69,7 @@ const ModalExample = (props) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error :(',
-                html: `${error.response}`,
+                html: `${error.response.data.description}`,
                 showConfirmButton: true
             })
         })

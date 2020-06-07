@@ -12,7 +12,7 @@ export class Profile extends Component {
 
   componentDidMount() {
 
-    if (sessionStorage.length === 0)
+    if (localStorage.length === 0)
     window.location.href = "/"
     
     Swal.fire({
@@ -26,17 +26,17 @@ export class Profile extends Component {
       }
   })
     axios.get('api/user/',{
-      headers:{ "Authorization" : "Bearer " +  sessionStorage.getItem('token')}
+      headers:{ "Authorization" : "Bearer " +  localStorage.getItem('token')}
     })
       .then(response => {
-        console.log(sessionStorage.getItem('token'))
+        console.log(localStorage.getItem('token'))
         console.log(response.data);
         this.setState({ user: response.data, hoursLeft: response.data.hoursLeft });
         console.log(this.state.user.name)
         Swal.close();
       })
       .catch(error => {
-        console.log(sessionStorage.getItem('token'))
+        console.log(localStorage.getItem('token'))
         Swal.hideLoading()
         console.log(error)
         Swal.fire({

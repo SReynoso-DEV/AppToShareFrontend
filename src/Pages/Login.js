@@ -19,6 +19,11 @@ export class Login extends Component {
             password: ''
         }
     }
+    componentDidMount() {
+      if (localStorage.length !== 0)
+      window.location.href = "/home"
+    }
+
 
     loginChange = (e) => {
         this.setState({
@@ -43,8 +48,8 @@ export class Login extends Component {
             .then(response => {
                 Swal.close()
                 console.log(response.data);
-                sessionStorage.setItem('userCode', this.state.userCode);
-                sessionStorage.setItem('token', response.data.token);
+                localStorage.setItem('userCode', this.state.userCode);
+                localStorage.setItem('token', response.data.token);
                 window.location.href="/home"
             })
             .catch(error => {

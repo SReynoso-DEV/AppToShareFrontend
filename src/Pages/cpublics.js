@@ -8,7 +8,7 @@ function CPublics () {
 
     const [cubiculos, setCubiculos] = useState([]);
     useEffect(() =>  {  
-        if (sessionStorage.length === 0)
+        if (localStorage.length === 0)
             window.location.href = "/"
         
 
@@ -23,7 +23,7 @@ function CPublics () {
             }
         })
         axios.get('api/available', {
-            headers: { "Authorization": "Bearer " + sessionStorage.getItem('token') }
+            headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
             .then(response => {
                 console.log(response.data);

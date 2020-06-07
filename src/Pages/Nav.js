@@ -11,8 +11,8 @@ const Nav = (props) => {
       active
     } = props;
 
-    function clearSessionStorage(){
-        sessionStorage.clear();
+    function clearLocalStorage(){
+        localStorage.clear();
     }
   
     return (
@@ -33,7 +33,7 @@ const Nav = (props) => {
                     <li className= {"nav-item "+(active === "myreservations"?"active ": "" )}>
                         <Link to="/myreservations" className="nav-link">Mis Reservas</Link>
                     </li>
-                    <li onClick={() => clearSessionStorage()} className="nav-item">
+                    <li onClick={() => clearLocalStorage()} className="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>
                     </li>
                 </ul>
