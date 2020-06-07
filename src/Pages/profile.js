@@ -11,6 +11,10 @@ export class Profile extends Component {
   };
 
   componentDidMount() {
+
+    if (sessionStorage.length === 0)
+    window.location.href = "/"
+    
     Swal.fire({
       title: 'Cargando Perfil',
       text: 'Espera recopilando los datos de tu perfil.',
@@ -46,7 +50,7 @@ export class Profile extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav active = "profile"/>
         <div className="col-md-12">
           <h1>Welcome Back: {this.state.user.name}</h1>
           <h5>userCode: {this.state.user.userCode}</h5>

@@ -5,12 +5,13 @@ import Swal from 'sweetalert2';
 import ModalExample from './reservation'
 
 function CPublics () {
-    // state = {
-    //     cubiculos: [],
-    // }
 
     const [cubiculos, setCubiculos] = useState([]);
-    useEffect(() =>  {
+    useEffect(() =>  {  
+        if (sessionStorage.length === 0)
+            window.location.href = "/"
+        
+
         Swal.fire({
             title: 'Cargando cubiculos',
             text: 'Espera estamos buscando que cubiculos estan disponibles.',
@@ -41,9 +42,10 @@ function CPublics () {
         return features
     }
 
+    
     return (
         <div>
-            <Nav />
+            <Nav active="cpublics"/>
             <table className="table">
                 <thead>
                     <tr>
@@ -73,10 +75,10 @@ function CPublics () {
                         )
                     )}
                 </tbody>
-            </table>
-            
+            </table>            
         </div>
     )
+    
 }
 
 export default CPublics;

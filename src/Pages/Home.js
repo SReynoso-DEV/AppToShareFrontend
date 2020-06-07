@@ -3,6 +3,13 @@ import React, { Component } from "react";
 
 
 export class Home extends Component {
+
+  componentDidMount() {
+    if (sessionStorage.length === 0)
+    window.location.href = "/"
+  }
+
+
     render(){  
       const {data} = this.props.location; 
       console.log(data);

@@ -6,7 +6,15 @@ import { Link } from 'react-router-dom';
 
 */
 
-function Nav() {
+const Nav = (props) => {
+    const {
+      active
+    } = props;
+
+    function clearSessionStorage(){
+        sessionStorage.clear();
+    }
+  
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link to="/home" className="navbar-brand" >Cubiculos Pool</Link>
@@ -16,23 +24,23 @@ function Nav() {
 
             <div className="navbar-collapse collapse show" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        <Link to="/profile" className="nav-link">Mi Perfil{/*<span className="sr-only">(current)</span>*/}</Link>
+                <li className= {"nav-item "+(active === "profile"?"active ": "" )}>
+                        <Link to="/profile" className="nav-link">Mi Perfil</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className= {"nav-item "+(active === "cpublics"?"active ": "" )}>
                         <Link to="/cpublics" className="nav-link">Cubiculos Publicos</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className= {"nav-item "+(active === "myreservations"?"active ": "" )}>
                         <Link to="/myreservations" className="nav-link">Mis Reservas</Link>
                     </li>
-                    <li className="nav-item">
+                    <li onClick={() => clearSessionStorage()} className="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>
                     </li>
                 </ul>
-                <form className="form-inline">
+                {/* <form className="form-inline">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                     <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> */}
             </div>
         </nav>
     );
