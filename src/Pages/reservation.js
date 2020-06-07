@@ -59,7 +59,7 @@ const ModalExample = (props) => {
               showConfirmButton: true
           }).then(function (result){
             if (result.value){ 
-              window.location.href = "/cpublics"
+              window.location.href = "/#/cpublics"
             }
         })
         })
