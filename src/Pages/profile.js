@@ -45,14 +45,14 @@ export class Profile extends Component {
             showConfirmButton: true
         })
     })
-  }
+  } 
 
   render() {
     return (
       <div>
         <Nav active = "profile"/>
         <div className="col-md-12">
-          <h1>Welcome Back: {this.state.user.name}</h1>
+          <h1>Welcome back, {this.state.user.name}</h1>
           <h5>userCode: {this.state.user.userCode}</h5>
           <h5>email: {this.state.user.email}</h5>
           <h5>inRoom: {this.state.user.inRoom ? "Usando un cubiculo" : "No esta usando un cubiculo"}</h5>
