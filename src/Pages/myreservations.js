@@ -26,6 +26,7 @@ function MyReservations() {
             headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
             .then(response => {
+                //console.log(localStorage.getItem('token'));
                 console.log(response.data);
                 setReservations(response.data);
                 Swal.close()
