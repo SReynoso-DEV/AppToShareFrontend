@@ -17,7 +17,7 @@ export class Profile extends Component {
     
     Swal.fire({
       title: 'Cargando Perfil',
-      text: 'Espera recopilando los datos de tu perfil.',
+      text: 'Recopilando los datos de tu perfil...',
       allowOutsideClick: false,
       allowEscapeKey: false,
       allowEnterKey: false,
@@ -53,9 +53,9 @@ export class Profile extends Component {
         <Nav active = "profile"/>
         <div className="col-md-12">
           <h1>Welcome back, {this.state.user.name}</h1>
-          <h5>userCode: {this.state.user.userCode}</h5>
+          <h5 class = "profile-text">userCode: {this.state.user.userCode}</h5>
           <h5>email: {this.state.user.email}</h5>
-          <h5>inRoom: {this.state.user.inRoom ? "Usando un cubiculo" : "No esta usando un cubiculo"}</h5>
+
           <h5>TodayHours: {this.state.hoursLeft.todayHours}</h5>
           <h5>TomorrowHours: {this.state.hoursLeft.tomorrowHours}</h5>
           <h5>SecondaryHours: {this.state.hoursLeft.secondaryHours}</h5>

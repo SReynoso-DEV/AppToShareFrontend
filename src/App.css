@@ -163,3 +163,12 @@ font-weight: 500 !important;
   background-color: #F82D2D;
   border-radius: 13px;
 }
+
+.home-text{
+  text-align: center;
+}
+
+.profile-text{
+  font-size: 30px;
+  font-family: "Lucida Console", Courier, monospace;
+}

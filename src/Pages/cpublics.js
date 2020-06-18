@@ -14,7 +14,7 @@ function CPublics () {
 
         Swal.fire({
             title: 'Cargando cubiculos',
-            text: 'Espera estamos buscando que cubiculos estan disponibles.',
+            text: 'Estamos buscando cubículos disponibles...',
             allowOutsideClick: false,
             allowEscapeKey: false,
             allowEnterKey: false,

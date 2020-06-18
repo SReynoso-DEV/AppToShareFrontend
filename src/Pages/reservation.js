@@ -37,7 +37,7 @@ const ModalExample = (props) => {
       setModal(!modal);
       Swal.fire({
         title: 'Reservando Cubiculo',
-        text: 'Espera separando el cubiculo para ti.',
+        text: 'Estamos separando el cubiculo para ti...',
         allowOutsideClick: false,
         allowEscapeKey: false,
         allowEnterKey: false,
@@ -53,7 +53,7 @@ const ModalExample = (props) => {
             console.log(response.data);
             Swal.fire({
               icon: 'success',
-              title: 'Cubiculo Reservado Satisfactoriamente',
+              title: 'Cubículo reservado satisfactoriamente',
               html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${response.data.start}<br/>
                     Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
               showConfirmButton: true
