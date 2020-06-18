@@ -73,6 +73,7 @@ export class Home extends Component {
      // const {data} = this.props.location; 
       //console.log(data);
       //console.log(t)
+    /////
       const hi =  moment(this.state.reserva.start).format("hh:mm")
       const hf =  moment(this.state.reserva.end).format("hh:mm")
 
