@@ -4,11 +4,6 @@ import axios from 'axios';
 import * as moment from 'moment-timezone'
 import Swal from "sweetalert2";
 import { Button } from 'reactstrap';
-/*
-const styles = {
-  color:  "crimson",
-  fontSize: "32px",
-};*/
 
 export class Home extends Component { 
   state = {
@@ -33,12 +28,10 @@ export class Home extends Component {
       headers:{ "Authorization" : "Bearer " +  localStorage.getItem('token')}
     })
       .then(response => {
-        //console.log(localStorage.getItem('token'))
-        //console.log(response.data);
         this.setState({ reserva: response.data});
-       // console.log("aaaaaaaaaa")
        Swal.close();
-      })       .catch(error => {
+      })       
+      .catch(error => {
         console.log(localStorage.getItem('token'))
         Swal.hideLoading()
         console.log(error)
@@ -52,12 +45,10 @@ export class Home extends Component {
       headers:{ "Authorization" : "Bearer " +  localStorage.getItem('token')}
     })
       .then(response => {
-        //console.log(localStorage.getItem('token'))
-       // console.log(response.data);
         this.setState({ user: response.data});
-       // console.log(this.state.user.name)
        Swal.close();
-      })     .catch(error => {
+      })     
+      .catch(error => {
         console.log(localStorage.getItem('token'))
         Swal.hideLoading()
         console.log(error)
@@ -89,7 +80,7 @@ export class Home extends Component {
          {this.state.reserva.room && JSON.stringify(this.state.reserva.room.office).replace(/['"]+/g, '')} - {this.state.reserva.room && JSON.stringify(this.state.reserva.room.code).replace(/['"]+/g, '')}
             </h4>
             <h4 class="home-text">{hi} a {hf}</h4><br/>
-            <h4 class = "home-text">{this.state.user.userCode == this.state.reserva.userCode && <h3><Button color="danger" >Convertir a cubículo público</Button></h3>}
+            <h4 class = "home-text">{this.state.user.userCode === this.state.reserva.userCode && <h3><Button color="danger" >Convertir a cubículo público</Button></h3>}
          </h4>
         </div>
       )

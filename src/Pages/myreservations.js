@@ -70,7 +70,6 @@ function MyReservations() {
                   showConfirmButton: true
               }).then(function (result){
                 if (result.value){ 
-                  //window.location.href = "/#/myreservations"
                   window.location.reload(false);
                 }
             })
