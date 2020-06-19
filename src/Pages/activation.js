@@ -3,7 +3,6 @@ import Nav from './Nav';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import ModalExample2 from './activated'
-import ModalExample from './reservation'
 
 function Activation () {
 

@@ -13,7 +13,6 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const [tiu, setTiu] = useState();
   const [hours, setHours] = useState();
-  // const [json, setJson] = useState([]);
 
   const toggle = () => setModal(!modal);
 
@@ -59,7 +58,6 @@ const ModalExample = (props) => {
               showConfirmButton: true
           }).then(function (result){
             if (result.value){ 
-              //window.location.href = "/#/cpublics"
               window.location.href = "/#/myreservations"
             }
         })

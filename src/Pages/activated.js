@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, InputGroupText, Input, InputGroupAddon, InputGroup } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, InputGroup } from 'reactstrap';
 import Swal from 'sweetalert2';
 import axios from "axios";
 
@@ -11,7 +11,6 @@ const ModalExample2 = (props) => {
   } = props;
 
   const [modal, setModal] = useState(false);
-  // const [json, setJson] = useState([]);
 
   const toggle = () => setModal(!modal);
 
