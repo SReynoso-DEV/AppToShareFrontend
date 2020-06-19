@@ -24,7 +24,8 @@ const Nav = (props) => {
 
             <div className="navbar-collapse collapse show" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
-                <li className= {"nav-item "+(active === "profile"?"active ": "" )}>
+                    
+                    <li className= {"nav-item "+(active === "profile"?"active ": "" )}>
                         <Link to="/profile" className="nav-link">Mi Perfil</Link>
                     </li>
                     <li className= {"nav-item "+(active === "cpublics"?"active ": "" )}>
@@ -32,6 +33,9 @@ const Nav = (props) => {
                     </li>
                     <li className= {"nav-item "+(active === "myreservations"?"active ": "" )}>
                         <Link to="/myreservations" className="nav-link">Mis Reservas</Link>
+                    </li>
+                    <li className= {"nav-item "+(active === "activation"?"active ": "")}>
+                        <Link to="/activation" className="nav-link">Activar Cubiculo</Link>
                     </li>
                     <li onClick={() => clearLocalStorage()} className="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>

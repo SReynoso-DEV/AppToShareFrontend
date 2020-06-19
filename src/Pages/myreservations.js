@@ -14,7 +14,7 @@ function MyReservations() {
 
         Swal.fire({
             title: 'Cargando tus reservas',
-            text: 'Espera estamos buscando que las reservas que realizaste',
+            text: 'Espera estamos buscando las reservas que realizaste',
             allowOutsideClick: false,
             allowEscapeKey: false,
             allowEnterKey: false,
@@ -26,6 +26,7 @@ function MyReservations() {
             headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
             .then(response => {
+                //console.log(localStorage.getItem('token'));
                 console.log(response.data);
                 setReservations(response.data);
                 Swal.close()
@@ -69,7 +70,8 @@ function MyReservations() {
                   showConfirmButton: true
               }).then(function (result){
                 if (result.value){ 
-                  window.location.href = "/#/myreservations"
+                  //window.location.href = "/#/myreservations"
+                  window.location.reload(false);
                 }
             })
             })

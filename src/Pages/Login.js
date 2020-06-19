@@ -35,8 +35,8 @@ export class Login extends Component {
     axiosSend = (e) => {
         e.preventDefault()
         Swal.fire({
-            title: 'Iniciando Sesion',
-            text: 'Espera estamos confirmando tus credenciales.',
+            title: 'Iniciando Sesión',
+            text: 'Espera, estamos confirmando tus credenciales.',
             allowOutsideClick: false,
             allowEscapeKey: false,
             allowEnterKey: false,
