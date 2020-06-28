@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upc-pool-frotend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upc-pool-frotend
+  template:
+    metadata:
+      labels:
+        app: upc-pool-frotend
+    spec:
+      containers:
+      - image: node
+        name: upc-pool-frotend
+        env:
+        - name: NODE_ENV
+          value: production
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: upc-pool-frotend
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP  
+  ports:
+  - name: "upc-pool-frotend"
+    port: 8080
+  selector:
+    app: upc-pool-frotend
