@@ -76,7 +76,7 @@ export class Home extends Component {
       return(
         <div>            
             <Nav />
-          <h1 className="text-center pt-3 pb-7">Bienvenido a AppToShare</h1>
+          <h1 className="text-center pt-3 pb-7">Bienvenido a AppToShare!</h1>
           <h4 style={{textAlign:"center",  color:  "crimson"}}> {this.state.user.inRoom ? "Actualmente te encuentras en el cubículo: "
           : "Actualmente no está usando ningún cubículo"}</h4>
           {           
