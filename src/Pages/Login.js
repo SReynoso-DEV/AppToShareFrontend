@@ -87,12 +87,12 @@ export class Login extends Component {
                       <form onSubmit={this.axiosSend}>
                         <Input
                           type="text"
-                          name="TIU"
+                          name="userCode"
                           changeFunction={this.loginChange}
                         />
                         <Input
                           type="password"
-                          name="contraseña"
+                          name="password"
                           changeFunction={this.loginChange}
                         />
                         <Button type="submit" value="Enviar" />
