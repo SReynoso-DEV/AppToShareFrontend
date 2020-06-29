@@ -76,7 +76,7 @@ export class Login extends Component {
                 <div className="card-body px-5">
                   <h2 className="form-title pt-5">
                     {" "}
-                    ¡Bienvenido a App To Share!
+                    ¡¡Bienvenido a App To Share!!
                   </h2>
                   <hr className="line line-color "></hr>
                   <div class="row justify-content-left">
