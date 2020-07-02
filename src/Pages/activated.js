@@ -18,7 +18,6 @@ const ModalExample2 = (props) => {
       setModal(!modal);
       Swal.fire({
         title: 'Desea activar este cubiculo?',
-        text: 'Hola q haces.',
         allowOutsideClick: false,
         allowEscapeKey: false,
         allowEnterKey: false,
@@ -45,6 +44,16 @@ const ModalExample2 = (props) => {
         .catch(error => {
             Swal.close()
             console.log(error.response)
+            Swal.fire({
+              icon: 'error',
+              title: 'Error :(',
+              html: `${error.response}`,
+              showConfirmButton: true
+          }).then(function (result){
+            if (result.value){ 
+              window.location.href = "/#/activation"
+            }
+        })
         })
   }
  

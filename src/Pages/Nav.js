@@ -29,13 +29,13 @@ const Nav = (props) => {
                         <Link to="/profile" className="nav-link">Mi Perfil</Link>
                     </li>
                     <li className= {"nav-item "+(active === "cpublics"?"active ": "" )}>
-                        <Link to="/cpublics" className="nav-link">Cubiculos Publicos</Link>
+                        <Link to="/cpublics" className="nav-link">Cubiculos Disponibles</Link>
                     </li>
                     <li className= {"nav-item "+(active === "myreservations"?"active ": "" )}>
                         <Link to="/myreservations" className="nav-link">Mis Reservas</Link>
                     </li>
                     <li className= {"nav-item "+(active === "activation"?"active ": "")}>
-                        <Link to="/activation" className="nav-link">Activar Cubiculo</Link>
+                        <Link to="/activation" className="nav-link">Cubiculos por Activar</Link>
                     </li>
                     <li onClick={() => clearLocalStorage()} className="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>

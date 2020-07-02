@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Nav from './Nav';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import ModalExample2 from './activated'
+import { Button } from 'reactstrap';
+import Axios from 'axios';
 
 function Activation () {
 
@@ -44,6 +45,59 @@ function Activation () {
         features = features.slice(0, -2);
         return features
     }
+
+    function eliminar(id){
+        Swal.fire({
+            title: 'Desea activar el cubiculo?',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, activalo!',
+            cancelButtonText: 'Cancelar'
+          }).then((result) => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Activando Cubiculo',
+                    text: 'Un momento por favor ...',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    onOpen: () => {
+                        Swal.showLoading()
+                    }
+                })
+                Axios.put('api/reservation/'+ id, {}, {
+                  headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
+              })
+              .then(response => {
+                Swal.close()
+                console.log(response.data);
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Cubiculo Activado Satisfactoriamente',
+                  html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${response.data.start}<br/>
+                        Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
+                  showConfirmButton: true
+              }).then(function (result){
+                if (result.value){ 
+                  window.location.reload(false);
+                }
+            })
+            })
+            .catch(error => {
+                Swal.hideLoading()
+                console.log(error.response)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error :(',
+                    html: `${error.response}`,
+                    showConfirmButton: true
+                })
+            })
+            }
+          })        
+    }
     
     return (
         <div>
@@ -61,19 +115,15 @@ function Activation () {
                     </tr>
                 </thead>
                 <tbody>
-                    {cubiculos.map(cubiculo =>
-                    <tr>
+                    {cubiculos.map((cubiculo, index) =>
+                    <tr key={cubiculo._id + index}>
                                 <th>{cubiculo.room.code}</th>
                                 <td>{cubiculo.userCode}</td>
                                 <td>{cubiculo.start}</td>
                                 <td>{cubiculo.room.office}</td>                                
                                 <td>{cubiculo.room.seats}</td>
                                 <td>{recorriendo(cubiculo.room)}</td>
-                                <td><ModalExample2
-                                    buttonLabel="Activar"
-                                    className="button"
-                                    object = {{"office": cubiculo.room.office, "code": cubiculo.room.code, "start": cubiculo.start,"id":cubiculo._id}}
-                                /></td>    
+                                <td><Button color="danger" onClick={() => eliminar(cubiculo._id)}>Activar</Button></td>   
                         </tr>                            
                             
                         )}
