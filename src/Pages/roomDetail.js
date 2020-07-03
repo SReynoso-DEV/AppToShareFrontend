@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, InputGroupText, Input, InputGroupAddon, InputGroup, Table } from 'reactstrap';
-import Swal from 'sweetalert2';
-import axios from "axios";
+import { Button, Modal, ModalHeader, ModalBody,Table } from 'reactstrap';
+
 
 
 const RoomDetail = (props) => {
@@ -12,20 +11,11 @@ const RoomDetail = (props) => {
   } = props;
 
   const [modal, setModal] = useState(false);
-  const [tiu, setTiu] = useState();
-  const [hours, setHours] = useState();
+
 
   const toggle = () => {
     console.log(object)
     setModal(!modal);
-  }
-
-  const entryTiu = (e) => {
-    setTiu(e.target.value);
-  }
-
-  const entryHours = (e) => {
-    setHours(e.target.value);
   }
 
   function recorriendo(seat) {

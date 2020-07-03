@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, InputGroupText, Input, InputGroupAddon, InputGroup, Table } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import Swal from 'sweetalert2';
 import axios from "axios";
 import CheckboxGroup from 'react-checkbox-group'
@@ -15,7 +15,6 @@ const JoinRoom = (props) => {
   const [features, setFeatures] = useState(['MAC', 'Apple Tv'])
 
   const [modal, setModal] = useState(false);
-  const [topic, setTopic] = useState();
 
   const toggle = () => {
     console.log(object)
@@ -23,7 +22,6 @@ const JoinRoom = (props) => {
   }  
 
   function send(){
-    console.log(topic);
     console.log(features);        
     
 

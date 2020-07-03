@@ -12,7 +12,6 @@ function MyReservations() {
     
 
     const [reservations, setReservations] = useState([]);
-    const [buttonDisabled, setbuttonDisabled] = useState(false);
     useEffect(() =>  {
         if (localStorage.length === 0)
         window.location.href = "/"
@@ -32,7 +31,6 @@ function MyReservations() {
             headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
             .then(response => {
-                //console.log(localStorage.getItem('token'));
                 console.log(response.data);
                 setReservations(response.data);
                 Swal.close()
@@ -71,8 +69,8 @@ function MyReservations() {
                 Swal.fire({
                   icon: 'success',
                   title: 'Reserva Eliminada Satisfactoriamente',
-                  html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${response.data.startOriginal}<br/>
-                        Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
+                  html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${moment(response.data.start).tz('America/Lima').format('LLLL')}<br/>
+                        Fin: ${moment(response.data.end).tz('America/Lima').format('LLLL')}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
                   showConfirmButton: true
               }).then(function (result){
                 if (result.value){ 
@@ -125,7 +123,7 @@ function MyReservations() {
                 Swal.fire({
                   icon: 'success',
                   title: 'Cubiculo activado correctamente',
-                  html: `Recuerda que tanto la persona que reservo el cubiculo, como el usuario secondario, ambos deben activarlo.</br>Para poder usarlo.`,
+                  html: `Tanto el alumno que reserva el cubiculo y el usuario secundario deben activar el cubiculo.<br/>Para que esta pueda ser usado.`,
                   showConfirmButton: true
               }).then(function (result){
                 if (result.value){ 

@@ -13,7 +13,6 @@ function Shared() {
     
 
     const [reservations, setReservations] = useState([]);
-    const [buttonDisabled, setbuttonDisabled] = useState(false);
     useEffect(() =>  {
         if (localStorage.length === 0)
         window.location.href = "/"

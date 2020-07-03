@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, InputGroupText, Input, InputGroupAddon, InputGroup } from 'reactstrap';
 import Swal from 'sweetalert2';
 import axios from "axios";
+import * as moment from 'moment-timezone'
+import 'moment/locale/es';
 
 const ModalExample = (props) => {
   const {
@@ -53,8 +55,8 @@ const ModalExample = (props) => {
             Swal.fire({
               icon: 'success',
               title: 'Cubículo reservado satisfactoriamente',
-              html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${response.data.start}<br/>
-                    Fin: ${response.data.end}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
+              html: `Sede: ${response.data.room.office}<br/>Codigo: ${response.data.room.code}<br/>Asientos: ${response.data.room.seats}<br/>Inicio: ${moment(response.data.start).tz('America/Lima').format('LLLL')}<br/>
+                    Fin: ${moment(response.data.end).tz('America/Lima').format('LLLL')}<br/>Creador: ${response.data.userCode}<br/>Activador: ${response.data.userSecondaryCode}`,
               showConfirmButton: true
           }).then(function (result){
             if (result.value){ 

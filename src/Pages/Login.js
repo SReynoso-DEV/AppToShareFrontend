@@ -58,7 +58,7 @@ export class Login extends Component {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error :(',
-                    html: `userCode: ${this.state.userCode}<br/>password: ${this.state.password}<br/>Mensaje: ${error.response.data.description.errormsg}<br/>StatusCode: ${error.response.status}`,
+                    html: `userCode: ${this.state.userCode}<br/>password: ************* <br/>Mensaje: ${error.response.data.description.errormsg}<br/>StatusCode: ${error.response.status}`,
                     showConfirmButton: true
                 })
             })
