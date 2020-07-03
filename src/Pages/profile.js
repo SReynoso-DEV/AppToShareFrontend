@@ -52,14 +52,14 @@ export class Profile extends Component {
       <div>
         <Nav active = "profile"/>
         <div className="col-md-12">
-          <h1>Welcome back, {this.state.user.name}</h1>
-          <h5 class = "profile-text">userCode: {this.state.user.userCode}</h5>
-          <h5>email: {this.state.user.email}</h5>
+          <h1>Bienvenido, {this.state.user.name}</h1>
+          <h5 class = "profile-text">TIU: {this.state.user.userCode}</h5>
+          <h5>correo: {this.state.user.email}</h5>
 
-          <h5>TodayHours: {this.state.hoursLeft.todayHours}</h5>
-          <h5>TomorrowHours: {this.state.hoursLeft.tomorrowHours}</h5>
-          <h5>SecondaryHours: {this.state.hoursLeft.secondaryHours}</h5>
-          <h5>points: {this.state.user.points}</h5>
+          <h5>Horas Reservables: {this.state.hoursLeft.todayHours}</h5>
+          <h5>Horas Reservables de mañana: {this.state.hoursLeft.tomorrowHours}</h5>
+          <h5>Horas de Activador: {this.state.hoursLeft.secondaryHours}</h5>
+          <h5>Puntos Acumulados: {this.state.user.points}</h5>
         </div>
       </div>
     );
