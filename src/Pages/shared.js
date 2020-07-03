@@ -4,11 +4,12 @@ import Swal from 'sweetalert2';
 import Axios from 'axios';
 import { Button } from 'reactstrap';
 import RoomDetail from './roomDetail'
-import MakePublic from './makePublic'
+import JoinRoom from './joinRoom'
 import * as moment from 'moment-timezone'
 import 'moment/locale/es';
 
-function MyReservations() {
+
+function Shared() {
     
 
     const [reservations, setReservations] = useState([]);
@@ -28,7 +29,7 @@ function MyReservations() {
                 Swal.showLoading()
             }
         })
-        Axios.get('api/reservation', {
+        Axios.get('api/reservation/public', {
             headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
             .then(response => {
@@ -116,7 +117,7 @@ function MyReservations() {
                         Swal.showLoading()
                     }
                 })
-                Axios.put('api/reservation/'+ id, {}, {
+                Axios.put('api/reservation/'+ id, {
                   headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
               })
               .then(response => {
@@ -150,7 +151,7 @@ function MyReservations() {
     return (
         
         <div>
-            <Nav active="myreservations"/>
+            <Nav active="shared"/>
             <table className="table">
                 <thead>
                     <tr>
@@ -159,7 +160,7 @@ function MyReservations() {
                         <th scope="col">Fecha/Hora Fin</th>
                         <th scope="col">Sede</th>
                         <th scope="col">Asientos</th>                      
-                        <th scope="col">Usuario Activador</th>
+                        <th scope="col">Topic</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Opciones</th>
                     </tr>
@@ -169,10 +170,10 @@ function MyReservations() {
                     <tr key = {reserva._id}>
                         <td>{reserva.room.code}</td>
                         <td>{moment(reserva.start).tz('America/Lima').format('LLLL')}</td>
-                        <td>{moment(reserva.end).tz('America/Lima').format('LLLL')}</td>
+                        <td>{moment(reserva.start).tz('America/Lima').format('LLLL')}</td>
                         <td>{reserva.room.office}</td>
                         <td>{reserva.room.seats}</td>
-                        <td>{reserva.userSecondaryCode}</td>
+                        <td>{reserva.theme}</td>
                         <td>{reserva.active === true ? "Activado" : "Por Activar"}</td>
                         <td>{reserva.active === false ? 
                             <div>
@@ -180,8 +181,8 @@ function MyReservations() {
                                 <Button color="danger" onClick={() => eliminar(reserva._id)}>Eliminar</Button>
                             </div>:
                             <div>
-                            <MakePublic
-                            buttonLabel="Compartir"
+                            <JoinRoom
+                            buttonLabel="Ingresar"
                                     className="button"
                                     object = {{"data":reserva}}
                             />
@@ -203,4 +204,4 @@ function MyReservations() {
     )
 }
 
-export default MyReservations;
+export default Shared;

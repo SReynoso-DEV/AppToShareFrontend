@@ -3,6 +3,8 @@ import Nav from './Nav';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import ModalExample from './reservation'
+import * as moment from 'moment-timezone'
+import 'moment/locale/es';
 
 function CPublics () {
 
@@ -62,7 +64,7 @@ function CPublics () {
                         cubiculo.available.map((av, index) =>
                             <tr key={cubiculo._id + index}>
                                 <th>{av.code}</th>
-                                <td>{cubiculo.start}</td>
+                                <td>{moment(cubiculo.start).tz('America/Lima').format('LLLL')}</td>
                                 <td>{av.office}</td>                                
                                 <td>{av.seats}</td>
                                 <td>{recorriendo(av)}</td>

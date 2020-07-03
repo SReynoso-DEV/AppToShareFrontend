@@ -34,8 +34,8 @@ const Nav = (props) => {
                     <li className= {"nav-item "+(active === "myreservations"?"active ": "" )}>
                         <Link to="/myreservations" className="nav-link">Mis Reservas</Link>
                     </li>
-                    <li className= {"nav-item "+(active === "activation"?"active ": "")}>
-                        <Link to="/activation" className="nav-link">Cubiculos por Activar</Link>
+                    <li className= {"nav-item "+(active === "shared"?"active ": "")}>
+                        <Link to="/shared" className="nav-link">Cubiculos Compartidos</Link>
                     </li>
                     <li onClick={() => clearLocalStorage()} className="nav-item">
                         <Link to="/" className="nav-link">LogOut</Link>

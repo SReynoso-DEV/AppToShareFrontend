@@ -7,7 +7,7 @@ import Home from './Pages/Home';
 import CPublics from './Pages/cpublics';
 import Profile from './Pages/profile';
 import MyReservations from './Pages/myreservations';
-import Activation from './Pages/activation';
+import Shared from './Pages/shared';
 
 function App(){
     return(
@@ -19,7 +19,7 @@ function App(){
             <Route path="/cpublics" exact       component={CPublics}/>
             <Route path="/profile" exact        component={Profile}/>
             <Route path="/myreservations" exact component={MyReservations}/>
-            <Route path="/activation" exact component={Activation}/>
+            <Route path="/shared" exact component={Shared}/>
             <Route exact path='/' render={({ location }) => <Redirect to={location.hash.replace('#', '')} />} />
           </Switch>
         </div>
